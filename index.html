@@ -26,29 +26,23 @@
         }
     </script>
     <style>
-        /* --- Özel Animasyonlu Mouse İmleci --- */
-        body {
-            cursor: none;
-        }
+        body { cursor: none; }
         #cursor-dot, #cursor-outline {
             pointer-events: none;
             position: fixed;
-            top: 0;
-            left: 0;
+            top: 0; left: 0;
             border-radius: 50%;
             z-index: 99999;
             transition: transform 0.1s ease-out, background-color 0.2s ease, border-color 0.2s ease;
         }
         #cursor-dot {
-            width: 8px;
-            height: 8px;
+            width: 8px; height: 8px;
             background-color: #f43f5e;
             transform: translate(-50%, -50%);
             box-shadow: 0 0 10px #f43f5e;
         }
         #cursor-outline {
-            width: 38px;
-            height: 38px;
+            width: 38px; height: 38px;
             border: 2px solid rgba(244, 63, 94, 0.6);
             transform: translate(-50%, -50%);
         }
@@ -61,11 +55,7 @@
             border-color: #ffffff;
             transform: translate(-50%, -50%) scale(1.25);
         }
-        a, button, input {
-            cursor: none !important;
-        }
-
-        /* --- Premium Arka Plan Işık Efekti --- */
+        a, button, input { cursor: none !important; }
         .glow-bg {
             background: radial-gradient(circle at 50% 20%, rgba(244, 63, 94, 0.15) 0%, rgba(7, 9, 14, 0) 70%);
         }
@@ -73,7 +63,7 @@
 </head>
 <body class="bg-[#07090e] text-slate-100 font-sans selection:bg-brand selection:text-white antialiased overflow-x-hidden glow-bg">
 
-    <!-- Özel İmleç Elementleri -->
+    <!-- Özel İmleç -->
     <div id="cursor-dot"></div>
     <div id="cursor-outline"></div>
 
@@ -86,14 +76,13 @@
                 </div>
                 <div>
                     <span class="font-extrabold tracking-wider text-lg block leading-none">ETRYPICAN</span>
-                    <span class="text-[10px] text-rose-500 font-semibold tracking-widest uppercase">Elite Software</span>
+                    <span class="text-[10px] text-rose-500 font-semibold tracking-widest uppercase">Internal Suite</span>
                 </div>
             </div>
             <div class="hidden md:flex items-center space-x-8 text-xs font-semibold tracking-wider text-slate-400">
-                <a href="#" class="hover:text-white transition">ANA SAYFA</a>
-                <a href="#features" class="hover:text-white transition">ÖZELLİKLER</a>
-                <a href="#" class="hover:text-white transition">İADE POLİTİKASI</a>
-                <a href="#" class="hover:text-white transition text-rose-400">ÜRÜNLER</a>
+                <a href="#" onclick="switchTab('home')" class="hover:text-white transition">ANA SAYFA</a>
+                <a href="#" onclick="switchTab('products')" class="hover:text-white transition text-rose-400">ÜRÜNLER (PRIVATE)</a>
+                <a href="#status" class="hover:text-white transition">DURUMLAR</a>
             </div>
             <div>
                 <a href="https://discord.com" target="_blank" class="bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 px-6 py-2.5 rounded-full text-xs font-bold tracking-wider transition backdrop-blur-md shadow-lg flex items-center space-x-2">
@@ -104,88 +93,111 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="relative pt-40 pb-24 md:pt-52 md:pb-36 flex flex-col items-center justify-center text-center px-4">
-        <!-- Arka Plan Işık Topu -->
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-rose-600/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+    <!-- ANA SAYFA SEKMESİ -->
+    <div id="tab-home" class="transition-opacity duration-300">
+        <section class="relative pt-40 pb-24 md:pt-52 md:pb-36 flex flex-col items-center justify-center text-center px-4">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-rose-600/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
 
-        <div class="inline-flex items-center space-x-2 bg-rose-500/10 border border-rose-500/20 px-4 py-1.5 rounded-full text-xs text-rose-400 mb-8 backdrop-blur-md shadow-inner">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-            <span class="font-semibold tracking-wide">VANGUARD BYPASS: AKTİF (UNDETECTED)</span>
-        </div>
-
-        <h1 class="text-4xl md:text-7xl font-extrabold max-w-4xl tracking-tight leading-none mb-6">
-            #1 Tespit Edilmez <br>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 via-red-500 to-amber-500">Güvenilir Hile Mağazası</span>
-        </h1>
-        
-        <p class="text-slate-400 max-w-xl text-sm md:text-base mb-10 leading-relaxed">
-            Geniş ve özel hile kataloğumuz ile oyun deneyiminizi geliştirin. Yüksek performans, sıfır gecikme ve tam güvenlik garantisi.
-        </p>
-
-        <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 w-full max-w-md">
-            <a href="#download" class="w-full sm:w-auto bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white px-8 py-4 rounded-full font-bold text-xs tracking-wider transition duration-300 shadow-2xl shadow-brand/40 flex items-center justify-center space-x-2 border border-rose-400/30">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                <span>HEMEN BAŞLA</span>
-            </a>
-            <a href="#status" class="w-full sm:w-auto bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 text-slate-200 px-8 py-4 rounded-full font-bold text-xs tracking-wider transition duration-300 backdrop-blur-md flex items-center justify-center space-x-2">
-                <svg class="w-4 h-4 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                <span>ÜRÜN DURUMLARI</span>
-            </a>
-        </div>
-    </section>
-
-    <!-- Premium Özellikler Kart Alanı -->
-    <section id="features" class="py-20 max-w-7xl mx-auto px-6 border-t border-white/5">
-        <div class="text-center mb-16">
-            <h2 class="text-2xl md:text-3xl font-extrabold mb-2 tracking-tight">SİSTEM ÖZELLİKLERİ</h2>
-            <p class="text-slate-400 text-xs tracking-wider uppercase">Donanım ve yazılım düzeyinde kusursuz performans</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Kart 1 -->
-            <div class="bg-gradient-to-b from-white/[0.04] to-transparent border border-white/10 rounded-2xl p-8 backdrop-blur-xl relative group hover:border-rose-500/50 transition duration-300">
-                <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400 mb-6 font-bold">01</div>
-                <h3 class="text-lg font-bold mb-2 text-slate-100">Smart Aimbot</h3>
-                <p class="text-slate-400 text-xs leading-relaxed">ÖzelleştirilebilirFOV, pürüzsüzleştirme ve kemik önceliği ile tamamen doğal bir nişan alma deneyimi.</p>
+            <div class="inline-flex items-center space-x-2 bg-rose-500/10 border border-rose-500/20 px-4 py-1.5 rounded-full text-xs text-rose-400 mb-8 backdrop-blur-md">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span class="font-semibold tracking-wide">INTERNAL PRIVATE ARCHITECTURE: ONLINE</span>
             </div>
-            <!-- Kart 2 -->
-            <div class="bg-gradient-to-b from-white/[0.04] to-transparent border border-white/10 rounded-2xl p-8 backdrop-blur-xl relative group hover:border-rose-500/50 transition duration-300">
-                <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400 mb-6 font-bold">02</div>
-                <h3 class="text-lg font-bold mb-2 text-slate-100">DirectX ESP Render</h3>
-                <p class="text-slate-400 text-xs leading-relaxed">Kutu, iskelet, sağlık durumu ve can bilgilerini sıfır kare (FPS) kaybıyla anlık olarak ekranda görün.</p>
+
+            <h1 class="text-4xl md:text-7xl font-extrabold max-w-4xl tracking-tight leading-none mb-6">
+                #1 Tespit Edilmez <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 via-red-500 to-amber-500">Güvenilir Hile Mağazası</span>
+            </h1>
+            
+            <p class="text-slate-400 max-w-xl text-sm md:text-base mb-10 leading-relaxed">
+                Geniş ve özel internal hile kataloğumuz ile oyun deneyiminizi bir üst seviyeye taşıyın.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 w-full max-w-md">
+                <button onclick="switchTab('products')" class="w-full sm:w-auto bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white px-8 py-4 rounded-full font-bold text-xs tracking-wider transition duration-300 shadow-2xl shadow-brand/40 flex items-center justify-center space-x-2 border border-rose-400/30">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    <span>ÜRÜNLERE GÖZ AT (PRIVATE)</span>
+                </button>
             </div>
-            <!-- Kart 3 -->
-            <div class="bg-gradient-to-b from-white/[0.04] to-transparent border border-white/10 rounded-2xl p-8 backdrop-blur-xl relative group hover:border-rose-500/50 transition duration-300">
-                <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400 mb-6 font-bold">03</div>
-                <h3 class="text-lg font-bold mb-2 text-slate-100">Kernel Security</h3>
-                <p class="text-slate-400 text-xs leading-relaxed">Gelişmiş imza koruması ve güncel bypass mimarisi ile her zaman güvende kalın.</p>
+        </section>
+    </div>
+
+    <!-- ÜRÜNLER / PRIVATE SEKMESİ (Başlangıçta gizli veya tıklayınca açılır) -->
+    <div id="tab-products" class="hidden pt-32 pb-24 max-w-7xl mx-auto px-6 transition-opacity duration-300">
+        <div class="flex items-center justify-between mb-10 border-b border-white/10 pb-6">
+            <div>
+                <span class="text-rose-500 text-xs font-bold tracking-widest uppercase block mb-1">Özel Envanter</span>
+                <h2 class="text-3xl font-extrabold tracking-tight">INTERNAL PRIVATE ÜRÜNLER</h2>
+            </div>
+            <button onclick="switchTab('home')" class="text-xs bg-white/5 hover:bg-white/10 border border-white/10 px-4 py-2 rounded-lg text-slate-300 transition">
+                ← Ana Sayfaya Dön
+            </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Ürün 1 -->
+            <div class="bg-gradient-to-b from-white/[0.05] to-black/40 border border-white/10 rounded-2xl p-6 backdrop-blur-xl relative group hover:border-rose-500/60 transition duration-300">
+                <div class="absolute top-4 right-4 bg-rose-500/10 border border-rose-500/30 text-rose-400 text-[10px] font-extrabold px-3 py-1 rounded-full tracking-wider">
+                    INTERNAL PRIVATE
+                </div>
+                <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400 mb-6 font-bold text-lg">V1</div>
+                <h3 class="text-xl font-bold mb-1 text-slate-100">Valorant Aimbot & ESP Suite</h3>
+                <p class="text-rose-400/80 text-xs font-semibold mb-4">Slot Sınırlı (Max 20 Kişi)</p>
+                <p class="text-slate-400 text-xs leading-relaxed mb-6">Kernel tabanlı tam korumalı, pürüzsüz aimbot ve DirectX tabanlı iskelet ESP sistemi.</p>
+                <button onclick="alert('Bu Private ürün şu an dolu veya özel davet gerektiriyor!')" class="w-full bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white border border-rose-500/40 py-3 rounded-xl font-bold text-xs tracking-wider transition">
+                    DETAYLARI İNCELE
+                </button>
+            </div>
+
+            <!-- Ürün 2 -->
+            <div class="bg-gradient-to-b from-white/[0.05] to-black/40 border border-white/10 rounded-2xl p-6 backdrop-blur-xl relative group hover:border-rose-500/60 transition duration-300">
+                <div class="absolute top-4 right-4 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-extrabold px-3 py-1 rounded-full tracking-wider">
+                    UNDETECTED
+                </div>
+                <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-6 font-bold text-lg">V2</div>
+                <h3 class="text-xl font-bold mb-1 text-slate-100">Vanguard Spoofer (HWID)</h3>
+                <p class="text-indigo-400/80 text-xs font-semibold mb-4">Kalıcı Donanım Maskeleme</p>
+                <p class="text-slate-400 text-xs leading-relaxed mb-6">Anakart ve disk banlarını tamamen kaldıran, yeniden başlatma gerektirmeyen profesyonel araç.</p>
+                <button onclick="alert('Spoofer paneline yönlendiriliyorsunuz... Discord destek alın.')" class="w-full bg-indigo-600/20 hover:bg-indigo-600 text-indigo-300 hover:text-white border border-indigo-500/40 py-3 rounded-xl font-bold text-xs tracking-wider transition">
+                    DETAYLARI İNCELE
+                </button>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Footer -->
     <footer class="border-t border-white/10 py-10 text-center text-xs text-slate-500 bg-black/40 backdrop-blur-md">
-        <p>&copy; 2026 Etrypican. Tüm Hakları Saklıdır. Güvenli ve elit oyun araçları.</p>
+        <p>&copy; 2026 Etrypican. Tüm Hakları Saklıdır. Internal Private Software.</p>
     </footer>
 
-    <!-- Özel İmleç Takip Scripti -->
+    <!-- Sekme Değiştirme ve Mouse Scripti -->
     <script>
+        function switchTab(tabName) {
+            const homeTab = document.getElementById('tab-home');
+            const productsTab = document.getElementById('tab-products');
+
+            if (tabName === 'products') {
+                homeTab.classList.add('hidden');
+                productsTab.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                productsTab.classList.add('hidden');
+                homeTab.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
         const cursorDot = document.getElementById('cursor-dot');
         const cursorOutline = document.getElementById('cursor-outline');
 
         window.addEventListener('mousemove', (e) => {
             const posX = e.clientX;
             const posY = e.clientY;
-
             cursorDot.style.left = `${posX}px`;
             cursorDot.style.top = `${posY}px`;
-
             cursorOutline.style.left = `${posX}px`;
             cursorOutline.style.top = `${posY}px`;
         });
 
-        // Tıklanabilir elementlerde imleci büyütme efekti
         const interactables = document.querySelectorAll('a, button, input');
         interactables.forEach(el => {
             el.addEventListener('mouseenter', () => document.body.classList.add('hovered'));
