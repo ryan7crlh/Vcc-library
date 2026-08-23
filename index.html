@@ -16,9 +16,9 @@
                     },
                     colors: {
                         brand: {
-                            DEFAULT: '#f43f5e',
-                            dark: '#e11d48',
-                            glow: 'rgba(244, 63, 94, 0.4)'
+                            DEFAULT: '#ffffff', // Beyaz/Gri Modern Vurgu
+                            dark: '#a1a1aa',
+                            glow: 'rgba(255, 255, 255, 0.15)'
                         }
                     }
                 }
@@ -37,17 +37,17 @@
         }
         #cursor-dot {
             width: 8px; height: 8px;
-            background-color: #f43f5e;
+            background-color: #ffffff;
             transform: translate(-50%, -50%);
-            box-shadow: 0 0 10px #f43f5e;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
         #cursor-outline {
             width: 38px; height: 38px;
-            border: 2px solid rgba(244, 63, 94, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.4);
             transform: translate(-50%, -50%);
         }
         body.hovered #cursor-dot {
-            background-color: #ffffff;
+            background-color: #000000;
             box-shadow: 0 0 15px #ffffff;
             transform: translate(-50%, -50%) scale(1.6);
         }
@@ -56,37 +56,39 @@
             transform: translate(-50%, -50%) scale(1.25);
         }
         a, button, input { cursor: none !important; }
-        .glow-bg {
-            background: radial-gradient(circle at 50% 20%, rgba(244, 63, 94, 0.15) 0%, rgba(7, 9, 14, 0) 70%);
+        
+        /* Şık Siyah-Beyaz Monokrom Arka Plan */
+        .mono-bg {
+            background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.07) 0%, rgba(5, 5, 8, 1) 70%);
         }
     </style>
 </head>
-<body class="bg-[#07090e] text-slate-100 font-sans selection:bg-brand selection:text-white antialiased overflow-x-hidden glow-bg">
+<body class="bg-[#050508] text-slate-100 font-sans selection:bg-white selection:text-black antialiased overflow-x-hidden mono-bg">
 
     <!-- Özel İmleç -->
     <div id="cursor-dot"></div>
     <div id="cursor-outline"></div>
 
     <!-- Navbar -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#07090e]/80 backdrop-blur-xl border-b border-white/10">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#050508]/80 backdrop-blur-xl border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-500 to-red-700 flex items-center justify-center shadow-lg shadow-brand/40 border border-white/10">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-zinc-700 to-black flex items-center justify-center shadow-lg border border-white/20">
                     <span class="font-extrabold text-white text-base">E</span>
                 </div>
                 <div>
                     <span class="font-extrabold tracking-wider text-lg block leading-none">ETRYPICAN</span>
-                    <span class="text-[10px] text-rose-500 font-semibold tracking-widest uppercase">Internal Suite</span>
+                    <span class="text-[10px] text-zinc-400 font-semibold tracking-widest uppercase">Internal Suite</span>
                 </div>
             </div>
             <div class="hidden md:flex items-center space-x-8 text-xs font-semibold tracking-wider text-slate-400">
                 <a href="#" onclick="switchTab('home')" class="hover:text-white transition">ANA SAYFA</a>
-                <a href="#" onclick="switchTab('products')" class="hover:text-white transition text-rose-400">ÜRÜNLER (PRIVATE)</a>
+                <a href="#" onclick="switchTab('products')" class="hover:text-white transition text-white">ÜRÜNLER (PRIVATE)</a>
                 <a href="#status" class="hover:text-white transition">DURUMLAR</a>
             </div>
             <div>
-                <a href="https://discord.com" target="_blank" class="bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 px-6 py-2.5 rounded-full text-xs font-bold tracking-wider transition backdrop-blur-md shadow-lg flex items-center space-x-2">
-                    <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
+                <a href="https://discord.gg/kyHhcpsyM" target="_blank" class="bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 px-6 py-2.5 rounded-full text-xs font-bold tracking-wider transition backdrop-blur-md shadow-lg flex items-center space-x-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                     <span>DISCORD</span>
                 </a>
             </div>
@@ -96,16 +98,16 @@
     <!-- ANA SAYFA SEKMESİ -->
     <div id="tab-home" class="transition-opacity duration-300">
         <section class="relative pt-40 pb-24 md:pt-52 md:pb-36 flex flex-col items-center justify-center text-center px-4">
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-rose-600/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-white/5 blur-[120px] rounded-full pointer-events-none -z-10"></div>
 
-            <div class="inline-flex items-center space-x-2 bg-rose-500/10 border border-rose-500/20 px-4 py-1.5 rounded-full text-xs text-rose-400 mb-8 backdrop-blur-md">
+            <div class="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-xs text-slate-300 mb-8 backdrop-blur-md">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
                 <span class="font-semibold tracking-wide">INTERNAL PRIVATE ARCHITECTURE: ONLINE</span>
             </div>
 
             <h1 class="text-4xl md:text-7xl font-extrabold max-w-4xl tracking-tight leading-none mb-6">
                 #1 Tespit Edilmez <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 via-red-500 to-amber-500">Güvenilir Hile Mağazası</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-400 to-zinc-600">Güvenilir Hile Mağazası</span>
             </h1>
             
             <p class="text-slate-400 max-w-xl text-sm md:text-base mb-10 leading-relaxed">
@@ -113,7 +115,7 @@
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 w-full max-w-md">
-                <button onclick="switchTab('products')" class="w-full sm:w-auto bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white px-8 py-4 rounded-full font-bold text-xs tracking-wider transition duration-300 shadow-2xl shadow-brand/40 flex items-center justify-center space-x-2 border border-rose-400/30">
+                <button onclick="switchTab('products')" class="w-full sm:w-auto bg-white hover:bg-zinc-200 text-black px-8 py-4 rounded-full font-bold text-xs tracking-wider transition duration-300 shadow-2xl shadow-white/10 flex items-center justify-center space-x-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                     <span>ÜRÜNLERE GÖZ AT (PRIVATE)</span>
                 </button>
@@ -121,11 +123,11 @@
         </section>
     </div>
 
-    <!-- ÜRÜNLER / PRIVATE SEKMESİ (Başlangıçta gizli veya tıklayınca açılır) -->
+    <!-- ÜRÜNLER / PRIVATE SEKMESİ -->
     <div id="tab-products" class="hidden pt-32 pb-24 max-w-7xl mx-auto px-6 transition-opacity duration-300">
         <div class="flex items-center justify-between mb-10 border-b border-white/10 pb-6">
             <div>
-                <span class="text-rose-500 text-xs font-bold tracking-widest uppercase block mb-1">Özel Envanter</span>
+                <span class="text-zinc-400 text-xs font-bold tracking-widest uppercase block mb-1">Özel Envanter</span>
                 <h2 class="text-3xl font-extrabold tracking-tight">INTERNAL PRIVATE ÜRÜNLER</h2>
             </div>
             <button onclick="switchTab('home')" class="text-xs bg-white/5 hover:bg-white/10 border border-white/10 px-4 py-2 rounded-lg text-slate-300 transition">
@@ -135,31 +137,31 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Ürün 1 -->
-            <div class="bg-gradient-to-b from-white/[0.05] to-black/40 border border-white/10 rounded-2xl p-6 backdrop-blur-xl relative group hover:border-rose-500/60 transition duration-300">
-                <div class="absolute top-4 right-4 bg-rose-500/10 border border-rose-500/30 text-rose-400 text-[10px] font-extrabold px-3 py-1 rounded-full tracking-wider">
+            <div class="bg-gradient-to-b from-white/[0.04] to-black/60 border border-white/10 rounded-2xl p-6 backdrop-blur-xl relative group hover:border-white/40 transition duration-300">
+                <div class="absolute top-4 right-4 bg-white/10 border border-white/20 text-white text-[10px] font-extrabold px-3 py-1 rounded-full tracking-wider">
                     INTERNAL PRIVATE
                 </div>
-                <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400 mb-6 font-bold text-lg">V1</div>
+                <div class="w-12 h-12 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-white mb-6 font-bold text-lg">V1</div>
                 <h3 class="text-xl font-bold mb-1 text-slate-100">Valorant Aimbot & ESP Suite</h3>
-                <p class="text-rose-400/80 text-xs font-semibold mb-4">Slot Sınırlı (Max 20 Kişi)</p>
+                <p class="text-zinc-400 text-xs font-semibold mb-4">Slot Sınırlı (Max 20 Kişi)</p>
                 <p class="text-slate-400 text-xs leading-relaxed mb-6">Kernel tabanlı tam korumalı, pürüzsüz aimbot ve DirectX tabanlı iskelet ESP sistemi.</p>
-                <button onclick="alert('Bu Private ürün şu an dolu veya özel davet gerektiriyor!')" class="w-full bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white border border-rose-500/40 py-3 rounded-xl font-bold text-xs tracking-wider transition">
+                <a href="https://discord.gg/kyHhcpsyM" target="_blank" class="block text-center bg-white hover:bg-zinc-200 text-black py-3 rounded-xl font-bold text-xs tracking-wider transition shadow-lg">
                     DETAYLARI İNCELE
-                </button>
+                </a>
             </div>
 
             <!-- Ürün 2 -->
-            <div class="bg-gradient-to-b from-white/[0.05] to-black/40 border border-white/10 rounded-2xl p-6 backdrop-blur-xl relative group hover:border-rose-500/60 transition duration-300">
+            <div class="bg-gradient-to-b from-white/[0.04] to-black/60 border border-white/10 rounded-2xl p-6 backdrop-blur-xl relative group hover:border-white/40 transition duration-300">
                 <div class="absolute top-4 right-4 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-extrabold px-3 py-1 rounded-full tracking-wider">
                     UNDETECTED
                 </div>
-                <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-6 font-bold text-lg">V2</div>
+                <div class="w-12 h-12 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-white mb-6 font-bold text-lg">V2</div>
                 <h3 class="text-xl font-bold mb-1 text-slate-100">Vanguard Spoofer (HWID)</h3>
-                <p class="text-indigo-400/80 text-xs font-semibold mb-4">Kalıcı Donanım Maskeleme</p>
+                <p class="text-zinc-400 text-xs font-semibold mb-4">Kalıcı Donanım Maskeleme</p>
                 <p class="text-slate-400 text-xs leading-relaxed mb-6">Anakart ve disk banlarını tamamen kaldıran, yeniden başlatma gerektirmeyen profesyonel araç.</p>
-                <button onclick="alert('Spoofer paneline yönlendiriliyorsunuz... Discord destek alın.')" class="w-full bg-indigo-600/20 hover:bg-indigo-600 text-indigo-300 hover:text-white border border-indigo-500/40 py-3 rounded-xl font-bold text-xs tracking-wider transition">
+                <a href="https://discord.gg/kyHhcpsyM" target="_blank" class="block text-center bg-white hover:bg-zinc-200 text-black py-3 rounded-xl font-bold text-xs tracking-wider transition shadow-lg">
                     DETAYLARI İNCELE
-                </button>
+                </a>
             </div>
         </div>
     </div>
