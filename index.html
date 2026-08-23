@@ -3,38 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Etrypican | Valorant Internal Tool Suite</title>
+    <title>Etrypican | Valorant Hile Mağazası</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Geist Mono Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
-                        mono: ['Geist Mono', 'monospace'],
+                        sans: ['Geist', 'sans-serif'],
                     },
                     colors: {
                         brand: {
-                            DEFAULT: '#00ff66', // Dijital Yeşil
-                            dark: '#00cc52',
-                            red: '#ff3355',  // Hata/Düşman Kırmızısı
-                            text: '#a0aec0',  // Soluk Metin
-                            ui: '#0b1120'    // Koyu UI Arka Planı
+                            DEFAULT: '#f43f5e',
+                            dark: '#e11d48',
+                            glow: 'rgba(244, 63, 94, 0.35)'
                         }
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     }
                 }
             }
         }
     </script>
     <style>
-        /* --- Özel İmleç (Cursor) --- */
+        /* --- Özel Animasyonlu Mouse İmleci --- */
         body {
-            cursor: none; /* Varsayılan imleci gizle */
+            cursor: none;
         }
         #cursor-dot, #cursor-outline {
             pointer-events: none;
@@ -42,159 +36,130 @@
             top: 0;
             left: 0;
             border-radius: 50%;
-            z-index: 9999;
-            transition: transform 0.15s ease-out, opacity 0.15s ease-out, background-color 0.2s ease;
+            z-index: 99999;
+            transition: transform 0.1s ease-out, background-color 0.2s ease, border-color 0.2s ease;
         }
         #cursor-dot {
-            width: 6px;
-            height: 6px;
-            background-color: #00ff66;
+            width: 8px;
+            height: 8px;
+            background-color: #f43f5e;
             transform: translate(-50%, -50%);
         }
         #cursor-outline {
-            width: 30px;
-            height: 30px;
-            border: 1px solid #00ff66;
+            width: 36px;
+            height: 36px;
+            border: 2px solid rgba(244, 63, 94, 0.5);
             transform: translate(-50%, -50%);
         }
-        /* Hover olduğunda imleci büyüt ve değiştir */
-        body.cursor-hover #cursor-dot {
-            background-color: #ff3355;
+        /* Hover durumunda imleç efekti */
+        body.hovered #cursor-dot {
+            background-color: #ffffff;
             transform: translate(-50%, -50%) scale(1.5);
         }
-        body.cursor-hover #cursor-outline {
-            border-color: #ff3355;
+        body.hovered #cursor-outline {
+            border-color: #ffffff;
             transform: translate(-50%, -50%) scale(1.2);
         }
 
-        /* --- Arka Plan Paralaks Efekti --- */
-        .parallax-bg {
-            position: fixed;
-            top: -50px; left: -50px; right: -50px; bottom: -50px;
-            background-image: url('https://raw.githubusercontent.com/ryan7crlh/etrypican/main/valorant_bg.png');
-            background-size: cover;
-            background-position: center;
-            filter: brightness(0.15) contrast(1.2) grayscale(0.2);
-            z-index: -1;
-            transition: transform 0.2s ease-out;
-        }
-        /* Minimalist dijital gürültü overlay */
-        .noise-overlay {
-            position: fixed; inset: 0;
-            background-image: url('https://www.transparenttextures.com/patterns/diagmonds-light.png');
-            opacity: 0.02;
-            z-index: -1;
-            pointer-events: none;
+        a, button, input {
+            cursor: none !important;
         }
     </style>
 </head>
-<body class="bg-brand-ui text-slate-100 font-mono selection:bg-brand selection:text-brand-ui overflow-x-hidden">
+<body class="bg-[#07090e] text-slate-100 font-sans selection:bg-brand selection:text-white antialiased overflow-x-hidden">
 
     <!-- Özel İmleç Elementleri -->
     <div id="cursor-dot"></div>
     <div id="cursor-outline"></div>
 
-    <!-- Arka Plan -->
-    <div class="parallax-bg" id="bg-image"></div>
-    <div class="noise-overlay"></div>
-
-    <!-- Navbar (Oyun İçi Üst Bilgi) -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-brand-ui/70 backdrop-blur-sm border-b border-white/5">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#07090e]/80 backdrop-blur-md border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-            <div class="flex items-center space-x-3 cursor-hoverable">
-                <div class="w-8 h-8 rounded-full bg-brand-ui flex items-center justify-center border border-brand shadow-inner shadow-brand/20">
-                    <span class="font-extrabold text-brand text-xl">V</span>
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-rose-500 to-red-600 flex items-center justify-center shadow-lg shadow-brand/30">
+                    <span class="font-extrabold text-white text-sm">V</span>
                 </div>
-                <span class="font-bold tracking-wider text-lg text-slate-100">ETRYPICAN</span>
+                <span class="font-bold tracking-wider text-lg">ETRYPICAN</span>
             </div>
-            <div class="hidden md:flex items-center space-x-6 text-sm text-brand-text">
-                <a href="#" class="hover:text-brand transition duration-200 cursor-hoverable">#1 GÜVENİLİR</a>
-                <a href="#features" class="hover:text-brand transition duration-200 cursor-hoverable">ÖZELLİKLER</a>
-                <a href="#download" class="hover:text-brand transition duration-200 cursor-hoverable">MAĞAZA</a>
-                <a href="#discord" class="hover:text-brand transition duration-200 cursor-hoverable">DISCORD</a>
+            <div class="hidden md:flex items-center space-x-8 text-sm text-slate-400">
+                <a href="#" class="hover:text-white transition">ANA SAYFA</a>
+                <a href="#" class="hover:text-white transition">İADE POLİTİKASI</a>
+                <a href="#" class="hover:text-white transition">ÜRÜNLER</a>
+                <a href="#" class="hover:text-white transition text-rose-500 font-medium">DUYURULAR</a>
             </div>
-            <div class="cursor-hoverable">
-                <a href="#download" class="relative bg-brand hover:bg-brand-dark text-brand-ui px-5 py-2 rounded text-xs font-bold tracking-wide transition shadow-xl shadow-brand/20 hover:scale-105">
-                    <span class="absolute -top-1 -right-1 flex h-3 w-3">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-3 w-3 bg-brand"></span>
-                    </span>
-                    HEMEN BAŞLA
+            <div>
+                <a href="https://discord.com" target="_blank" class="bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 px-5 py-2 rounded-full text-xs font-semibold tracking-wide transition backdrop-blur-sm">
+                    DİSCORD
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section (Ana Panel) -->
-    <section class="relative pt-40 pb-24 md:pt-52 md:pb-36 flex items-center justify-center px-4">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 items-center relative">
-            
-            <!-- Sol Taraf (Dijital Yazı) -->
-            <div class="md:col-span-7 space-y-6 z-10 text-center md:text-left">
-                <div class="inline-flex items-center space-x-2 bg-brand-ui border border-white/10 px-4 py-1 rounded-full text-xs text-brand-text backdrop-blur-sm cursor-hoverable">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span>PLATFORM DURUMU: ÇEVRİM İÇİ • 06.08.2024</span>
-                </div>
-                
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none text-slate-50">
-                    <span class="block text-brand/90 mb-1">#1 Tespit Edilmez</span>
-                    Güvenilir Hile
-                    <span class="block text-slate-200">Mağazası</span>
-                </h1>
-                
-                <p class="text-brand-text max-w-xl text-sm md:text-base mx-auto md:mx-0 leading-relaxed">
-                    Geniş ve özel hile kataloğumuz ile oyun deneyiminizi geliştirin. Tüm ürünler anlık ban dalgası korumalıdır ve otomatik güncellenir.
-                </p>
-                
-                <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4 pt-6">
-                    <a href="#download" class="cursor-hoverable w-full sm:w-auto group bg-brand hover:bg-brand-dark text-brand-ui px-8 py-4 rounded font-bold text-sm transition duration-300 transform hover:translate-y-0.5 shadow-lg shadow-brand/10 flex items-center justify-center space-x-2">
-                        <svg class="w-5 h-5 text-brand-ui" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                        <span>HEMEN BAŞLA (YÜKLE)</span>
-                    </a>
-                    <a href="#status" class="cursor-hoverable w-full sm:w-auto group bg-brand-ui border border-white/10 hover:border-brand/50 text-brand-text hover:text-brand px-8 py-4 rounded font-bold text-sm transition duration-300 transform hover:translate-y-0.5 flex items-center justify-center space-x-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                        <span>ÜRÜN DURUMLARI</span>
-                    </a>
-                </div>
-            </div>
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 flex flex-col items-center justify-center text-center px-4">
+        <div class="absolute inset-0 -z-10 flex items-center justify-center opacity-20 pointer-events-none">
+            <div class="w-[600px] h-[600px] bg-gradient-to-tr from-rose-600/30 to-red-600/0 rounded-full blur-3xl"></div>
+        </div>
 
-            <!-- Sağ Taraf (Hover Card) -->
-            <div class="md:col-span-5 z-10 cursor-hoverable relative group">
-                <div class="absolute -inset-4 bg-brand-ui rounded-3xl opacity-20 blur-xl group-hover:opacity-30 transition duration-500"></div>
-                <div class="relative bg-black/60 backdrop-blur-lg border border-white/10 p-8 rounded-2xl shadow-2xl shadow-black/40 transform transition-all duration-500 group-hover:scale-105 group-hover:shadow-brand/5">
-                    <div class="flex items-center justify-between mb-6">
-                        <div class="text-brand font-bold text-sm tracking-wider uppercase">LİSANS DURUMU</div>
-                        <div class="text-xs text-brand-text">ID: #9483</div>
-                    </div>
-                    <div class="bg-brand-ui border border-white/5 rounded-lg p-4 flex items-center space-x-4 mb-8">
-                        <div class="w-12 h-12 rounded-full bg-black flex items-center justify-center border border-brand/30">
-                            <img src="https://raw.githubusercontent.com/ryan7crlh/etrypican/main/valorant_icon.png" class="w-8 h-8 opacity-80" alt="Valo Icon">
-                        </div>
-                        <div>
-                            <div class="text-slate-50 font-bold text-lg">PREMIUM <span class="text-brand">VALORANT</span></div>
-                            <div class="text-emerald-400 text-xs font-semibold flex items-center space-x-1">
-                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-slow"></span>
-                                <span>AKTİF • BİTİŞ: 30 GÜN SONRA</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#download" class="w-full block text-center bg-brand hover:bg-brand-dark text-brand-ui py-4 rounded font-bold text-sm transition">HİLE PANELİNİ AÇ (F7)</a>
-                </div>
-            </div>
+        <div class="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-xs text-rose-400 mb-6 backdrop-blur-sm">
+            <span class="w-2 h-2 rounded-full bg-brand animate-pulse"></span>
+            <span>#1 GÜVENİLİR KAYNAK</span>
+        </div>
 
-            <!-- Arka Plan Merkez Figür -->
-            <div class="absolute inset-0 -z-10 flex items-center justify-center opacity-10 md:opacity-15 pointer-events-none">
-                <div class="w-[600px] h-[600px] bg-[radial-gradient(circle_closest-side,#00ff66,transparent)] blur-[100px] animate-pulse-slow"></div>
-            </div>
+        <h1 class="text-4xl md:text-7xl font-extrabold max-w-4xl tracking-tight leading-none mb-6">
+            #1 Tespit Edilmez <br>Güvenilir Hile Mağazası
+        </h1>
+        
+        <p class="text-slate-400 max-w-xl text-base md:text-lg mb-10">
+            Geniş ve özel hile kataloğumuz ile oyun deneyiminizi geliştirin.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 w-full max-w-md">
+            <a href="#start" class="w-full sm:w-auto bg-brand hover:bg-brand-dark text-white px-8 py-3.5 rounded-full font-medium text-sm transition shadow-xl shadow-brand/30 flex items-center justify-center space-x-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                <span>HEMEN BAŞLA</span>
+            </a>
+            <a href="#status" class="w-full sm:w-auto bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 px-8 py-3.5 rounded-full font-medium text-sm transition backdrop-blur-sm flex items-center justify-center space-x-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                <span>ÜRÜN DURUMLARI</span>
+            </a>
+        </div>
+        
+        <div class="mt-4">
+            <a href="https://discord.com" target="_blank" class="inline-flex items-center space-x-2 bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/30 text-indigo-300 px-6 py-3 rounded-full font-medium text-sm transition backdrop-blur-sm">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6072 1.24a18.27 18.27 0 00-5.4872 0 12.64 12.64 0 00-.6179-1.24.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 1.4228 5.9929 1.4294a.077.077 0 00.0817-.0527c.4633-.6309.8732-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-1.2778c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.771 1.3623 1.225 1.9932a.076.076 0 00.0817.0537c1.9556-.0065 3.9441.0818 5.9938-1.4294a.0727.0727 0 00.032-.055c.5-5.177-.8382-9.674-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/></svg>
+                <span>DİSCORD</span>
+            </a>
         </div>
     </section>
 
-    <!-- Footer (Oyun İçi Alt Bilgi) -->
-    <footer id="discord" class="border-t border-white/5 py-8 px-6 mt-20 text-brand-text text-xs">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
-            <p>&copy; 2026 Etrypican. Tüm Hakları Saklıdır. Yüksek performans ve güvenlik için tasarlandı.</p>
-            <div class="flex items-center space-x-4 cursor-hoverable">
-                <a href="#" class="hover:text-brand transition">Yasal Uyarı</a>
-                <a href="#" class="hover:text-brand transition">Gizlilik Politikası</a>
-                <a href="https://discord.com" target="_blank" class="bg-white/5 text-slate-300 px-4 py-1.5 rounded border border-white/10 hover:bg-indigo-600 hover:text-white transition duration-300 flex items-center space-x-1.5">
-                   <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6072 1.24
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-8 text-center text-xs text-slate-500">
+        <p>&copy; 2026 Etrypican. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <!-- Özel İmleç Takip Scripti -->
+    <script>
+        const cursorDot = document.getElementById('cursor-dot');
+        const cursorOutline = document.getElementById('cursor-outline');
+
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            cursorOutline.style.left = `${posX}px`;
+            cursorOutline.style.top = `${posY}px`;
+        });
+
+        // Tıklanabilir elementlerde imleci büyütme efekti
+        const interactables = document.querySelectorAll('a, button');
+        interactables.forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('hovered'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('hovered'));
+        });
+    </script>
+</body>
+</html>
