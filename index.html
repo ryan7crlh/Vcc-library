@@ -54,19 +54,33 @@
             background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.07) 0%, rgba(5, 5, 8, 1) 70%);
         }
 
-        /* --- Kar / Parçacık Efekti --- */
+        /* Fareye Duyarlı Dinamik Işık/Blur Efekti */
+        #mouse-glow {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 40%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            transition: width 0.3s, height 0.3s;
+        }
+
+        /* --- Yoğun Kar / Parçacık Efekti --- */
         .snowflake {
             position: fixed;
             top: -10px;
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.6);
             border-radius: 50%;
             pointer-events: none;
             animation: fall linear infinite;
             z-index: 1;
         }
         @keyframes fall {
-            0% { transform: translateY(-10px) translateX(0); opacity: 0.8; }
-            100% { transform: translateY(105vh) translateX(20px); opacity: 0.1; }
+            0% { transform: translateY(-10px) translateX(0); opacity: 0.9; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(105vh) translateX(30px); opacity: 0.1; }
         }
     </style>
 </head>
@@ -75,6 +89,9 @@
     <!-- Özel İmleç -->
     <div id="cursor-dot"></div>
     <div id="cursor-outline"></div>
+
+    <!-- Fare Hareketli Işık / Blur Efekti -->
+    <div id="mouse-glow"></div>
 
     <!-- Kar/Parçacık Efekti Alanı -->
     <div id="particles"></div>
@@ -114,7 +131,7 @@
         <section class="relative pt-40 pb-24 md:pt-52 md:pb-36 flex flex-col items-center justify-center text-center px-4 z-10">
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-white/5 blur-[120px] rounded-full pointer-events-none -z-10"></div>
 
-            <div class="inline-flex items-center space-x-2.5 bg-white/5 border border-white/10 px-4 py-2 rounded-full text-xs text-slate-300 mb-8 backdrop-blur-md">
+            <div class="inline-flex items-center space-x-2.5 bg-white/5 border border-white/10 px-4 py-2 rounded-full text-xs text-slate-300 mb-8 backdrop-blur-md shadow-lg">
                 <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.8)] animate-pulse"></span>
                 <span class="font-bold tracking-wide" data-tr="STATUS: UNDETECTED" data-en="STATUS: UNDETECTED">STATUS: UNDETECTED</span>
             </div>
@@ -292,18 +309,18 @@
 
     <!-- Scriptler -->
     <script>
-        // Kar / Parçacık Efekti Üreteci
+        // Yoğun Kar / Parçacık Efekti Üreteci (Adet artırıldı)
         const particlesContainer = document.getElementById('particles');
-        const particleCount = 35;
+        const particleCount = 85;
         for (let i = 0; i < particleCount; i++) {
             const snowflake = document.createElement('div');
             snowflake.classList.add('snowflake');
             snowflake.style.left = `${Math.random() * 100}vw`;
             snowflake.style.top = `${Math.random() * -100}vh`;
-            const size = Math.random() * 3 + 1;
+            const size = Math.random() * 3.5 + 1;
             snowflake.style.width = `${size}px`;
             snowflake.style.height = `${size}px`;
-            snowflake.style.animationDuration = `${Math.random() * 10 + 5}s`;
+            snowflake.style.animationDuration = `${Math.random() * 7 + 3}s`;
             snowflake.style.animationDelay = `${Math.random() * 5}s`;
             particlesContainer.appendChild(snowflake);
         }
@@ -339,23 +356,38 @@
             });
         }
 
-        // Özel İmleç Takibi
+        // Özel İmleç ve Fare Hareketli Blur/Işık Efekti Takibi
         const cursorDot = document.getElementById('cursor-dot');
         const cursorOutline = document.getElementById('cursor-outline');
+        const mouseGlow = document.getElementById('mouse-glow');
 
         window.addEventListener('mousemove', (e) => {
             const posX = e.clientX;
             const posY = e.clientY;
+            
+            // İmleç koordinatları
             cursorDot.style.left = `${posX}px`;
             cursorDot.style.top = `${posY}px`;
             cursorOutline.style.left = `${posX}px`;
             cursorOutline.style.top = `${posY}px`;
+
+            // Fare arkasındaki yumuşak blur ışık efektinin konumu
+            mouseGlow.style.left = `${posX}px`;
+            mouseGlow.style.top = `${posY}px`;
         });
 
         const interactables = document.querySelectorAll('a, button, input');
         interactables.forEach(el => {
-            el.addEventListener('mouseenter', () => document.body.classList.add('hovered'));
-            el.addEventListener('mouseleave', () => document.body.classList.remove('hovered'));
+            el.addEventListener('mouseenter', () => {
+                document.body.classList.add('hovered');
+                mouseGlow.style.width = '650px';
+                mouseGlow.style.height = '650px';
+            });
+            el.addEventListener('mouseleave', () => {
+                document.body.classList.remove('hovered');
+                mouseGlow.style.width = '500px';
+                mouseGlow.style.height = '500px';
+            });
         });
     </script>
 </body>
