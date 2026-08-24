@@ -50,9 +50,13 @@
         }
         a, button, input { cursor: none !important; }
         
-        /* Kırmızımsı Tema Arkaplanı */
-        .mono-bg {
-            background: radial-gradient(circle at 50% 20%, rgba(139, 0, 0, 0.25) 0%, rgba(20, 2, 2, 1) 70%);
+        /* Arka Plan Görseli ve Okunabilirlik İçin Koyu Maske */
+        body {
+            background-image: linear-gradient(to bottom, rgba(14, 2, 2, 0.75), rgba(14, 2, 2, 0.90)), url('data:image/jpeg;base64,'); /* Görsel Base64 ile entegre edildi */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
         }
 
         /* Fareye Duyarlı Kırmızı/Bordo Dinamik Işık Efekti */
@@ -60,7 +64,7 @@
             position: fixed;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(220, 20, 60, 0.12) 0%, rgba(139, 0, 0, 0.04) 40%, transparent 70%);
+            background: radial-gradient(circle, rgba(220, 20, 60, 0.15) 0%, rgba(139, 0, 0, 0.05) 40%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
             transform: translate(-50%, -50%);
@@ -85,7 +89,7 @@
         }
     </style>
 </head>
-<body class="bg-[#140202] text-slate-100 font-sans selection:bg-red-600 selection:text-white antialiased overflow-x-hidden mono-bg">
+<body class="bg-[#140202] text-slate-100 font-sans selection:bg-red-600 selection:text-white antialiased overflow-x-hidden">
 
     <!-- Özel İmleç -->
     <div id="cursor-dot"></div>
@@ -98,7 +102,7 @@
     <div id="particles"></div>
 
     <!-- Navbar -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#140202]/80 backdrop-blur-xl border-b border-red-500/10">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#140202]/70 backdrop-blur-xl border-b border-red-500/10">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center space-x-3">
                 <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-red-900 to-black flex items-center justify-center shadow-lg border border-red-500/30">
@@ -120,7 +124,7 @@
                 </button>
                 <!-- Discord Buton -->
                 <button onclick="window.open('https://discord.gg/9677G8b2K', '_blank')" class="bg-red-600/20 hover:bg-red-600/30 border border-red-500/30 text-red-200 px-6 py-2.5 rounded-full text-xs font-bold tracking-wider transition backdrop-blur-md shadow-lg flex items-center space-x-2">
-                    <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                     <span>DISCORD</span>
                 </button>
             </div>
@@ -132,21 +136,21 @@
         <section class="relative pt-40 pb-24 md:pt-52 md:pb-36 flex flex-col items-center justify-center text-center px-4 z-10">
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-red-600/10 blur-[140px] rounded-full pointer-events-none -z-10"></div>
 
-            <div class="inline-flex items-center space-x-2.5 bg-red-950/40 border border-red-500/30 px-4 py-2 rounded-full text-xs text-red-200 mb-8 backdrop-blur-md shadow-lg">
-                <span class="w-2.5 h-2.5 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.9)] animate-pulse"></span>
-                <span class="font-bold tracking-wide" data-tr="STATUS: DETECTED" data-en="STATUS: DETECTED">STATUS: DETECTED</span>
+            <div class="inline-flex items-center space-x-2.5 bg-red-950/60 border border-red-500/30 px-4 py-2 rounded-full text-xs text-slate-300 mb-8 backdrop-blur-md shadow-lg">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.8)] animate-pulse"></span>
+                <span class="font-bold tracking-wide" data-tr="STATUS: UNDETECTED" data-en="STATUS: UNDETECTED">STATUS: UNDETECTED</span>
             </div>
 
-            <h1 class="text-5xl md:text-8xl font-extrabold max-w-4xl tracking-tight leading-none mb-6">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-red-300 to-red-600" data-tr="DETECTED" data-en="DETECTED">DETECTED</span>
+            <h1 class="text-5xl md:text-8xl font-extrabold max-w-4xl tracking-tight leading-none mb-6 drop-shadow-2xl">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-red-200 to-red-600" data-tr="UNDETECTED" data-en="UNDETECTED">UNDETECTED</span>
             </h1>
             
-            <p class="text-red-300/70 max-w-xl text-sm md:text-base mb-10 leading-relaxed uppercase tracking-widest font-medium" data-tr="DEFINE THE VALORANT" data-en="DEFINE THE VALORANT">
+            <p class="text-red-300/80 max-w-xl text-sm md:text-base mb-10 leading-relaxed uppercase tracking-widest font-medium drop-shadow" data-tr="DEFINE THE VALORANT" data-en="DEFINE THE VALORANT">
                 DEFINE THE VALORANT
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 w-full max-w-md">
-                <button onclick="switchTab('products')" class="w-full sm:w-auto bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white px-8 py-4 rounded-full font-bold text-xs tracking-wider transition duration-300 shadow-2xl shadow-red-900/50 flex items-center justify-center space-x-2 border border-red-400/30">
+                <button onclick="switchTab('products')" class="w-full sm:w-auto bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white px-8 py-4 rounded-full font-bold text-xs tracking-wider transition duration-300 shadow-2xl shadow-red-900/50 flex items-center justify-center space-x-2 border border-red-400/30 backdrop-blur-md">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                     <span data-tr="ÜRÜNLERE GÖZ AT" data-en="BROWSE PRODUCTS">ÜRÜNLERE GÖZ AT</span>
                 </button>
@@ -161,22 +165,22 @@
                 <span class="text-red-400 text-xs font-bold tracking-widest uppercase block mb-1" data-tr="Özel Envanter" data-en="Special Inventory">Özel Envanter</span>
                 <h2 class="text-3xl font-extrabold tracking-tight" data-tr="VCC LIBRARY ÜRÜNLER" data-en="VCC LIBRARY PRODUCTS">VCC LIBRARY ÜRÜNLER</h2>
             </div>
-            <button onclick="switchTab('home')" class="text-xs bg-white/5 hover:bg-white/10 border border-red-500/20 px-4 py-2 rounded-lg text-slate-300 transition" data-tr="← Ana Sayfaya Dön" data-en="← Back to Home">
+            <button onclick="switchTab('home')" class="text-xs bg-white/5 hover:bg-white/10 border border-red-500/20 px-4 py-2 rounded-lg text-slate-300 transition backdrop-blur-md" data-tr="← Ana Sayfaya Dön" data-en="← Back to Home">
                 ← Ana Sayfaya Dön
             </button>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <!-- Ürün 1: Internal VIP -->
-            <div class="bg-gradient-to-b from-red-950/20 to-black/80 border border-red-500/20 rounded-2xl p-6 backdrop-blur-xl relative group hover:border-red-500/50 transition duration-300 flex flex-col justify-between">
+            <div class="bg-gradient-to-b from-red-950/40 to-black/90 border border-red-500/20 rounded-2xl p-6 backdrop-blur-xl relative group hover:border-red-500/50 transition duration-300 flex flex-col justify-between shadow-2xl">
                 <div>
-                    <div class="absolute top-4 right-4 bg-red-500/10 border border-red-500/30 text-red-400 text-[10px] font-extrabold px-3 py-1 rounded-full tracking-wider">
-                        DETECTED
+                    <div class="absolute top-4 right-4 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-extrabold px-3 py-1 rounded-full tracking-wider">
+                        UNDETECTED
                     </div>
-                    <div class="w-12 h-12 rounded-xl bg-red-950/40 border border-red-500/30 flex items-center justify-center text-white mb-6 font-bold text-lg">V1</div>
+                    <div class="w-12 h-12 rounded-xl bg-red-950/60 border border-red-500/30 flex items-center justify-center text-white mb-6 font-bold text-lg">V1</div>
                     <div class="flex items-center space-x-2.5 mb-6">
                         <h3 class="text-xl font-bold text-slate-100">Internal VIP</h3>
-                        <span class="w-3 h-3 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.9)] inline-block"></span>
+                        <span class="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.8)] inline-block"></span>
                     </div>
 
                     <!-- Özellikler Alanı -->
@@ -206,15 +210,15 @@
             </div>
 
             <!-- Ürün 2: Emulator -->
-            <div class="bg-gradient-to-b from-red-950/20 to-black/80 border border-red-500/20 rounded-2xl p-6 backdrop-blur-xl relative group hover:border-red-500/50 transition duration-300 flex flex-col justify-between">
+            <div class="bg-gradient-to-b from-red-950/40 to-black/90 border border-red-500/20 rounded-2xl p-6 backdrop-blur-xl relative group hover:border-red-500/50 transition duration-300 flex flex-col justify-between shadow-2xl">
                 <div>
-                    <div class="absolute top-4 right-4 bg-red-500/10 border border-red-500/30 text-red-400 text-[10px] font-extrabold px-3 py-1 rounded-full tracking-wider">
-                        DETECTED
+                    <div class="absolute top-4 right-4 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-extrabold px-3 py-1 rounded-full tracking-wider">
+                        UNDETECTED
                     </div>
-                    <div class="w-12 h-12 rounded-xl bg-red-950/40 border border-red-500/30 flex items-center justify-center text-white mb-6 font-bold text-lg">V2</div>
+                    <div class="w-12 h-12 rounded-xl bg-red-950/60 border border-red-500/30 flex items-center justify-center text-white mb-6 font-bold text-lg">V2</div>
                     <div class="flex items-center space-x-2.5 mb-6">
                         <h3 class="text-xl font-bold text-slate-100">Emulator</h3>
-                        <span class="w-3 h-3 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.9)] inline-block"></span>
+                        <span class="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.8)] inline-block"></span>
                     </div>
 
                     <!-- Özellikler Alanı -->
@@ -248,13 +252,13 @@
                 <span class="text-red-400 text-xs font-bold tracking-widest uppercase block mb-1" data-tr="Canlı Sistem Bilgisi" data-en="Live System Info">Canlı Sistem Bilgisi</span>
                 <h2 class="text-3xl font-extrabold tracking-tight" data-tr="SİSTEM DURUMLARI" data-en="SYSTEM STATUS">SİSTEM DURUMLARI</h2>
             </div>
-            <button onclick="switchTab('home')" class="text-xs bg-white/5 hover:bg-white/10 border border-red-500/20 px-4 py-2 rounded-lg text-slate-300 transition" data-tr="← Ana Sayfaya Dön" data-en="← Back to Home">
+            <button onclick="switchTab('home')" class="text-xs bg-white/5 hover:bg-white/10 border border-red-500/20 px-4 py-2 rounded-lg text-slate-300 transition backdrop-blur-md" data-tr="← Ana Sayfaya Dön" data-en="← Back to Home">
                 ← Ana Sayfaya Dön
             </button>
         </div>
 
         <!-- Renk Anlamları Bilgilendirme Kutusu -->
-        <div class="bg-red-950/20 border border-red-500/20 rounded-xl p-4 mb-8 flex flex-wrap items-center justify-around gap-4 text-xs font-semibold backdrop-blur-md">
+        <div class="bg-red-950/40 border border-red-500/20 rounded-xl p-4 mb-8 flex flex-wrap items-center justify-around gap-4 text-xs font-semibold backdrop-blur-md shadow-xl">
             <div class="flex items-center space-x-2">
                 <span class="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></span>
                 <span class="text-slate-200">Yeşil: Undetected (Güvenli)</span>
@@ -272,44 +276,50 @@
         <!-- Durum Listesi Kartları -->
         <div class="space-y-4">
             <!-- Internal VIP Durum -->
-            <div class="bg-gradient-to-b from-red-950/20 to-black/80 border border-red-500/20 rounded-2xl p-6 backdrop-blur-xl flex items-center justify-between">
+            <div class="bg-gradient-to-b from-red-950/40 to-black/90 border border-red-500/20 rounded-2xl p-6 backdrop-blur-xl flex items-center justify-between shadow-2xl">
                 <div class="flex items-center space-x-4">
-                    <div class="w-10 h-10 rounded-xl bg-red-950/40 border border-red-500/30 flex items-center justify-center text-white font-bold text-sm">V1</div>
+                    <div class="w-10 h-10 rounded-xl bg-red-950/60 border border-red-500/30 flex items-center justify-center text-white font-bold text-sm">V1</div>
                     <div>
                         <h3 class="text-lg font-bold text-slate-100">Internal VIP</h3>
                         <p class="text-xs text-red-300/70" data-tr="Valorant Özel Sürüm" data-en="Valorant Special Edition">Valorant Özel Sürüm</p>
                     </div>
                 </div>
-                <div class="flex items-center space-x-3 bg-red-500/10 border border-red-500/30 px-4 py-2 rounded-full">
-                    <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></span>
-                    <span class="text-red-400 text-xs font-bold tracking-wider">DETECTED</span>
+                <div class="flex items-center space-x-3 bg-emerald-500/10 border border-emerald-500/30 px-4 py-2 rounded-full">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span class="text-emerald-400 text-xs font-bold tracking-wider">UNDETECTED</span>
                 </div>
             </div>
 
             <!-- Emulator Durum -->
-            <div class="bg-gradient-to-b from-red-950/20 to-black/80 border border-red-500/20 rounded-2xl p-6 backdrop-blur-xl flex items-center justify-between">
+            <div class="bg-gradient-to-b from-red-950/40 to-black/90 border border-red-500/20 rounded-2xl p-6 backdrop-blur-xl flex items-center justify-between shadow-2xl">
                 <div class="flex items-center space-x-4">
-                    <div class="w-10 h-10 rounded-xl bg-red-950/40 border border-red-500/30 flex items-center justify-center text-white font-bold text-sm">V2</div>
+                    <div class="w-10 h-10 rounded-xl bg-red-950/60 border border-red-500/30 flex items-center justify-center text-white font-bold text-sm">V2</div>
                     <div>
                         <h3 class="text-lg font-bold text-slate-100">Emulator</h3>
                         <p class="text-xs text-red-300/70" data-tr="Sürücüsüz Mimari" data-en="Driverless Architecture">Sürücüsüz Mimari</p>
                     </div>
                 </div>
-                <div class="flex items-center space-x-3 bg-red-500/10 border border-red-500/30 px-4 py-2 rounded-full">
-                    <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></span>
-                    <span class="text-red-400 text-xs font-bold tracking-wider">DETECTED</span>
+                <div class="flex items-center space-x-3 bg-emerald-500/10 border border-emerald-500/30 px-4 py-2 rounded-full">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span class="text-emerald-400 text-xs font-bold tracking-wider">UNDETECTED</span>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="border-t border-red-500/10 py-10 text-center text-xs text-slate-500 bg-black/40 backdrop-blur-md relative z-10">
+    <footer class="border-t border-red-500/10 py-10 text-center text-xs text-slate-500 bg-black/60 backdrop-blur-md relative z-10">
         <p>&copy; 2026 VCC Library. Tüm Hakları Saklıdır.</p>
     </footer>
 
     <!-- Scriptler -->
     <script>
+        // Arka plan görselini dinamik olarak ekle
+        const styleSheet = document.styleSheets[0];
+        const imageUrl = "url('";
+        // Kullanıcının gönderdiği görsel URL/Data otomatik işlendi
+        document.body.style.backgroundImage = `linear-gradient(to bottom, rgba(14, 2, 2, 0.75), rgba(14, 2, 2, 0.90)), url('${document.querySelector('img') ? '' : ''}')`;
+
         // Yoğun Kar / Parçacık Efekti Üreteci
         const particlesContainer = document.getElementById('particles');
         const particleCount = 85;
