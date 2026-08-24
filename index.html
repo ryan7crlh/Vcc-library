@@ -88,7 +88,7 @@
             100% { transform: translateY(105vh) translateX(30px); opacity: 0.1; }
         }
 
-        /* --- 3D Kart Tilt (Gerçekçi Derinlik ve Fırlama) Efektleri --- */
+        /* --- Gerçekçi 3D Tilt ve Derinlik Efektleri --- */
         .tilt-card {
             transform-style: preserve-3d;
             perspective: 1000px;
@@ -112,7 +112,7 @@
     <nav class="fixed top-0 left-0 right-0 z-50 bg-[#140202]/70 backdrop-blur-xl border-b border-red-500/10">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <!-- Logo Sorunu Düzeltildi (Inline Görsel / Fallback) -->
+                <!-- Logo -->
                 <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-red-900 to-black flex items-center justify-center shadow-lg border border-red-500/30 overflow-hidden">
                     <img src="logo.png" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23500\'/><text x=\'50\' y=\'65\' font-size=\'50\' fill=\'white\' text-anchor=\'middle\' font-family=\'sans-serif\' font-weight=\'bold\'>V</text></svg>';" alt="Logo" class="w-full h-full object-cover">
                 </div>
@@ -164,7 +164,7 @@
                 </button>
             </div>
 
-            <!-- KURUCULAR (OWNERS) KISMI - GERÇEKÇİ 3D FIRLAMA EFEKTİ -->
+            <!-- KURUCULAR (OWNERS) KISMI - 3D TILT EKLENDİ -->
             <div class="w-full max-w-5xl mx-auto px-4 mb-24">
                 <div class="text-center mb-8">
                     <span class="text-red-400 text-xs font-bold tracking-widest uppercase block mb-1">Yönetici Kadrosu</span>
@@ -462,7 +462,7 @@
                     const centerX = rect.width / 2;
                     const centerY = rect.height / 2;
                     
-                    const rotateX = (y - centerY) / 6;  // Daha dik eğilme
+                    const rotateX = (y - centerY) / 6;
                     const rotateY = (centerX - x) / 6;
                     
                     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.12, 1.12, 1.12) translateZ(30px)`;
