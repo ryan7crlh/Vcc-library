@@ -50,9 +50,9 @@
         }
         a, button, input { cursor: none !important; }
         
-        /* Arka Plan Görseli ve Okunabilirlik İçin Koyu Maske */
+        /* Arka Plan Görseli (Görseli depona bg.jpg olarak atıp adını buraya yazmalısın) */
         body {
-            background-image: linear-gradient(to bottom, rgba(14, 2, 2, 0.75), rgba(14, 2, 2, 0.90)), url('data:image/jpeg;base64,'); /* Görsel Base64 ile entegre edildi */
+            background-image: linear-gradient(to bottom, rgba(14, 2, 2, 0.65), rgba(14, 2, 2, 0.85)), url('bg.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -314,12 +314,6 @@
 
     <!-- Scriptler -->
     <script>
-        // Arka plan görselini dinamik olarak ekle
-        const styleSheet = document.styleSheets[0];
-        const imageUrl = "url('";
-        // Kullanıcının gönderdiği görsel URL/Data otomatik işlendi
-        document.body.style.backgroundImage = `linear-gradient(to bottom, rgba(14, 2, 2, 0.75), rgba(14, 2, 2, 0.90)), url('${document.querySelector('img') ? '' : ''}')`;
-
         // Yoğun Kar / Parçacık Efekti Üreteci
         const particlesContainer = document.getElementById('particles');
         const particleCount = 85;
