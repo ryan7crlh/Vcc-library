@@ -88,26 +88,11 @@
             100% { transform: translateY(105vh) translateX(30px); opacity: 0.1; }
         }
 
-        /* --- 3D Kart Tilt (Eğilme) ve Akış Animasyonları --- */
+        /* --- 3D Kart Tilt (Eğilme) ve Geçiş Efektleri --- */
         .testimonial-card {
             transform-style: preserve-3d;
             perspective: 1000px;
-            transition: transform 0.1s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .marquee-track {
-            display: flex;
-            width: max-content;
-            animation: marquee 35s linear infinite;
-        }
-
-        .marquee-track:hover {
-            animation-play-state: paused;
+            transition: transform 0.1s ease-out, opacity 0.5s ease, transform 0.5s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
     </style>
 </head>
@@ -212,90 +197,17 @@
                 </div>
             </div>
 
-            <!-- 3D ANIMASYONLU SAHTE YORUMLAR (MARQUEE SLIDER) KISMI -->
-            <div class="w-full overflow-hidden py-10 mb-16 relative">
-                <div class="text-center mb-10">
+            <!-- 3D 3'lü Değişen Yorum Paneli -->
+            <div class="w-full max-w-6xl mx-auto px-4 mb-16 text-left">
+                <div class="mb-10 text-center">
                     <span class="text-red-400 text-xs font-bold tracking-widest uppercase block mb-1">OUR REVIEWS</span>
                     <h3 class="text-3xl font-extrabold tracking-tight mb-2">Customer Testimonials</h3>
                     <p class="text-xs text-slate-400">Chosen by those who prioritize stability and consistency.</p>
                 </div>
 
-                <!-- Gradient Karartma Kenarları -->
-                <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#140202] to-transparent z-20 pointer-events-none"></div>
-                <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#140202] to-transparent z-20 pointer-events-none"></div>
-
-                <!-- Sürekli Akan Yorum Rayı (Kopyalanmış Liste ile Sonsuz Döngü) -->
-                <div class="marquee-track flex space-x-6 py-4">
-                    <!-- Yorum 1 -->
-                    <div class="testimonial-card w-[350px] bg-gradient-to-b from-red-950/40 to-black/90 border border-red-500/20 rounded-2xl p-6 backdrop-blur-xl shadow-2xl flex flex-col justify-between text-left shrink-0">
-                        <div>
-                            <div class="flex text-amber-400 space-x-1 mb-4 text-sm">★★★★★</div>
-                            <p class="text-xs text-slate-200 leading-relaxed mb-6 font-medium">"This is literally the best internal cheat available right now. Zero performance drop, clean menu!"</p>
-                        </div>
-                        <div class="flex items-center justify-between border-t border-red-500/10 pt-4 text-xs">
-                            <span class="font-bold text-red-300">nynox</span>
-                            <span class="text-slate-500 text-[10px]">2 days ago</span>
-                        </div>
-                    </div>
-
-                    <!-- Yorum 2 -->
-                    <div class="testimonial-card w-[350px] bg-gradient-to-b from-red-950/40 to-black/90 border border-red-500/20 rounded-2xl p-6 backdrop-blur-xl shadow-2xl flex flex-col justify-between text-left shrink-0">
-                        <div>
-                            <div class="flex text-amber-400 space-x-1 mb-4 text-sm">★★★★★</div>
-                            <p class="text-xs text-slate-200 leading-relaxed mb-6 font-medium">"Emulator soo good! Driverless system makes me feel completely safe. Massive respect to the team."</p>
-                        </div>
-                        <div class="flex items-center justify-between border-t border-red-500/10 pt-4 text-xs">
-                            <span class="font-bold text-red-300">zewox</span>
-                            <span class="text-slate-500 text-[10px]">1 week ago</span>
-                        </div>
-                    </div>
-
-                    <!-- Yorum 3 -->
-                    <div class="testimonial-card w-[350px] bg-gradient-to-b from-red-950/40 to-black/90 border border-red-500/20 rounded-2xl p-6 backdrop-blur-xl shadow-2xl flex flex-col justify-between text-left shrink-0">
-                        <div>
-                            <div class="flex text-amber-400 space-x-1 mb-4 text-sm">★★★★★</div>
-                            <p class="text-xs text-slate-200 leading-relaxed mb-6 font-medium">"V1 internal is a masterpiece. Aimbot is super smooth and legit looking. 10/10!"</p>
-                        </div>
-                        <div class="flex items-center justify-between border-t border-red-500/10 pt-4 text-xs">
-                            <span class="font-bold text-red-300">kralthepro</span>
-                            <span class="text-slate-500 text-[10px]">2 weeks ago</span>
-                        </div>
-                    </div>
-
-                    <!-- Yorum 4 -->
-                    <div class="testimonial-card w-[350px] bg-gradient-to-b from-red-950/40 to-black/90 border border-red-500/20 rounded-2xl p-6 backdrop-blur-xl shadow-2xl flex flex-col justify-between text-left shrink-0">
-                        <div>
-                            <div class="flex text-amber-400 space-x-1 mb-4 text-sm">★★★★★</div>
-                            <p class="text-xs text-slate-200 leading-relaxed mb-6 font-medium">"Support answered instantly when I needed a hwid reset. Best community and developers!"</p>
-                        </div>
-                        <div class="flex items-center justify-between border-t border-red-500/10 pt-4 text-xs">
-                            <span class="font-bold text-red-300">vortex</span>
-                            <span class="text-slate-500 text-[10px]">3 weeks ago</span>
-                        </div>
-                    </div>
-
-                    <!-- Sonsuz döngü akışı kusursuz olsun diye kopyalanan grup -->
-                    <div class="testimonial-card w-[350px] bg-gradient-to-b from-red-950/40 to-black/90 border border-red-500/20 rounded-2xl p-6 backdrop-blur-xl shadow-2xl flex flex-col justify-between text-left shrink-0">
-                        <div>
-                            <div class="flex text-amber-400 space-x-1 mb-4 text-sm">★★★★★</div>
-                            <p class="text-xs text-slate-200 leading-relaxed mb-6 font-medium">"This is literally the best internal cheat available right now. Zero performance drop, clean menu!"</p>
-                        </div>
-                        <div class="flex items-center justify-between border-t border-red-500/10 pt-4 text-xs">
-                            <span class="font-bold text-red-300">nynox</span>
-                            <span class="text-slate-500 text-[10px]">2 days ago</span>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card w-[350px] bg-gradient-to-b from-red-950/40 to-black/90 border border-red-500/20 rounded-2xl p-6 backdrop-blur-xl shadow-2xl flex flex-col justify-between text-left shrink-0">
-                        <div>
-                            <div class="flex text-amber-400 space-x-1 mb-4 text-sm">★★★★★</div>
-                            <p class="text-xs text-slate-200 leading-relaxed mb-6 font-medium">"Emulator soo good! Driverless system makes me feel completely safe. Massive respect to the team."</p>
-                        </div>
-                        <div class="flex items-center justify-between border-t border-red-500/10 pt-4 text-xs">
-                            <span class="font-bold text-red-300">zewox</span>
-                            <span class="text-slate-500 text-[10px]">1 week ago</span>
-                        </div>
-                    </div>
+                <!-- 3 Adet 3D Kart Alanı -->
+                <div id="testimonials-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- JavaScript ile dinamik olarak doldurulacak -->
                 </div>
             </div>
 
@@ -537,31 +449,85 @@
             });
         });
 
-        // 3D Kart Tilt (Eğilme) Efekti
-        const cards = document.querySelectorAll('.testimonial-card');
-        cards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = (y - centerY) / 10;
-                const rotateY = (centerX - x) / 10;
-                
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
-                card.style.borderColor = 'rgba(239, 68, 68, 0.6)';
-                card.style.boxShadow = '0 20px 30px rgba(220, 20, 60, 0.25)';
-            });
+        // 3D Kart Tilt Efekti Ekleyen Fonksiyon
+        function attachTiltEffect() {
+            const cards = document.querySelectorAll('.testimonial-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = (y - centerY) / 10;
+                    const rotateY = (centerX - x) / 10;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+                    card.style.borderColor = 'rgba(239, 68, 68, 0.6)';
+                    card.style.boxShadow = '0 20px 30px rgba(220, 20, 60, 0.25)';
+                });
 
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-                card.style.borderColor = 'rgba(239, 68, 68, 0.2)';
-                card.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.5)';
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+                    card.style.borderColor = 'rgba(239, 68, 68, 0.2)';
+                    card.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.5)';
+                });
             });
-        });
+        }
+
+        // --- 3 Saniyede Bir Sırayla Yorum Değiştirme Sistemi ---
+        const allReviews = [
+            { text: "This is literally the best internal cheat available right now. Zero performance drop, clean menu!", author: "nynox", time: "2 days ago" },
+            { text: "Emulator soo good! Driverless system makes me feel completely safe. Massive respect to the team.", author: "zewox", time: "1 week ago" },
+            { text: "V1 internal is a masterpiece. Aimbot is super smooth and legit looking. 10/10!", author: "kralthepro", time: "2 weeks ago" },
+            { text: "Support answered instantly when I needed a hwid reset. Best community and developers!", author: "vortex", time: "3 weeks ago" },
+            { text: "The security is insane, played for hours without any issues. Undetected king!", author: "shadow", time: "4 days ago" },
+            { text: "Best loader design I've ever seen. Clean features and zero delay. Highly recommend!", author: "matrix", time: "5 days ago" }
+        ];
+
+        // Başlangıçta ekranda gösterilecek 3 aktif indeks
+        let activeIndices = [0, 1, 2];
+        const gridContainer = document.getElementById('testimonials-grid');
+
+        function renderTestimonials() {
+            gridContainer.innerHTML = '';
+            activeIndices.forEach((reviewIdx) => {
+                const r = allReviews[reviewIdx];
+                const cardHTML = `
+                    <div class="testimonial-card bg-gradient-to-b from-red-950/40 to-black/90 border border-red-500/20 rounded-2xl p-6 backdrop-blur-xl shadow-2xl flex flex-col justify-between text-left opacity-100 transition-all duration-500">
+                        <div>
+                            <div class="flex text-amber-400 space-x-1 mb-4 text-sm">★★★★★</div>
+                            <p class="text-xs text-slate-200 leading-relaxed mb-6 font-medium">"${r.text}"</p>
+                        </div>
+                        <div class="flex items-center justify-between border-t border-red-500/10 pt-4 text-xs">
+                            <span class="font-bold text-red-300">${r.author}</span>
+                            <span class="text-slate-500 text-[10px]">${r.time}</span>
+                        </div>
+                    </div>
+                `;
+                gridContainer.innerHTML += cardHTML;
+            });
+            attachTiltEffect();
+        }
+
+        // İlk yükleme
+        renderTestimonials();
+
+        // Her 3 saniyede bir sıradaki 1 kartı silip yenisini getirme döngüsü
+        let replaceIndex = 0;
+        setInterval(() => {
+            // Hangi kartın (0, 1 veya 2) değişeceğini sırayla seçiyoruz
+            const nextReviewIndex = (Math.max(...activeIndices) + 1) % allReviews.length;
+            // Listede zaten varsa çakışmasın diye sonraki index'e kaydırıyoruz
+            let targetReviewIdx = (activeIndices[replaceIndex] + 3) % allReviews.length;
+            
+            activeIndices[replaceIndex] = targetReviewIdx;
+            replaceIndex = (replaceIndex + 1) % 3; // Sırayla 0, 1 ve 2. kartı değiştirmek için
+
+            renderTestimonials();
+        }, 3000);
     </script>
 </body>
 </html>
