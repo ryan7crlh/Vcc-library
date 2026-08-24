@@ -87,6 +87,28 @@
             50% { opacity: 0.5; }
             100% { transform: translateY(105vh) translateX(30px); opacity: 0.1; }
         }
+
+        /* --- 3D Kart Tilt (Eğilme) ve Akış Animasyonları --- */
+        .testimonial-card {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: transform 0.1s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marquee 35s linear infinite;
+        }
+
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
     </style>
 </head>
 <body class="bg-[#140202] text-slate-100 font-sans selection:bg-red-600 selection:text-white antialiased overflow-x-hidden">
@@ -149,7 +171,7 @@
                 DEFINE THE VALORANT
             </p>
 
-            <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 w-full max-w-md mb-16">
+            <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 w-full max-w-md mb-20">
                 <button onclick="switchTab('products')" class="w-full sm:w-auto bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white px-8 py-4 rounded-full font-bold text-xs tracking-wider transition duration-300 shadow-2xl shadow-red-900/50 flex items-center justify-center space-x-2 border border-red-400/30 backdrop-blur-md">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                     <span data-tr="ÜRÜNLERE GÖZ AT" data-en="BROWSE PRODUCTS">ÜRÜNLERE GÖZ AT</span>
@@ -190,48 +212,88 @@
                 </div>
             </div>
 
-            <!-- SAHTE MÜŞTERİ YORUMLARI (TESTIMONIALS) KISMI -->
-            <div class="w-full max-w-6xl mx-auto px-4 mb-16 text-left">
-                <div class="mb-10 text-center">
+            <!-- 3D ANIMASYONLU SAHTE YORUMLAR (MARQUEE SLIDER) KISMI -->
+            <div class="w-full overflow-hidden py-10 mb-16 relative">
+                <div class="text-center mb-10">
                     <span class="text-red-400 text-xs font-bold tracking-widest uppercase block mb-1">OUR REVIEWS</span>
                     <h3 class="text-3xl font-extrabold tracking-tight mb-2">Customer Testimonials</h3>
                     <p class="text-xs text-slate-400">Chosen by those who prioritize stability and consistency.</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Gradient Karartma Kenarları -->
+                <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#140202] to-transparent z-20 pointer-events-none"></div>
+                <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#140202] to-transparent z-20 pointer-events-none"></div>
+
+                <!-- Sürekli Akan Yorum Rayı (Kopyalanmış Liste ile Sonsuz Döngü) -->
+                <div class="marquee-track flex space-x-6 py-4">
                     <!-- Yorum 1 -->
-                    <div class="bg-gradient-to-b from-red-950/30 to-black/80 border border-red-500/15 rounded-2xl p-6 backdrop-blur-xl shadow-2xl flex flex-col justify-between">
+                    <div class="testimonial-card w-[350px] bg-gradient-to-b from-red-950/40 to-black/90 border border-red-500/20 rounded-2xl p-6 backdrop-blur-xl shadow-2xl flex flex-col justify-between text-left shrink-0">
                         <div>
                             <div class="flex text-amber-400 space-x-1 mb-4 text-sm">★★★★★</div>
-                            <p class="text-xs text-slate-300 leading-relaxed mb-6">"Bro optimization is insane, zero FPS drop and completely smooth gameplay. Absolute beast team!"</p>
+                            <p class="text-xs text-slate-200 leading-relaxed mb-6 font-medium">"This is literally the best internal cheat available right now. Zero performance drop, clean menu!"</p>
                         </div>
                         <div class="flex items-center justify-between border-t border-red-500/10 pt-4 text-xs">
-                            <span class="font-bold text-slate-200">nynox</span>
-                            <span class="text-slate-500 text-[10px]">2 weeks ago</span>
+                            <span class="font-bold text-red-300">nynox</span>
+                            <span class="text-slate-500 text-[10px]">2 days ago</span>
                         </div>
                     </div>
 
                     <!-- Yorum 2 -->
-                    <div class="bg-gradient-to-b from-red-950/30 to-black/80 border border-red-500/15 rounded-2xl p-6 backdrop-blur-xl shadow-2xl flex flex-col justify-between">
+                    <div class="testimonial-card w-[350px] bg-gradient-to-b from-red-950/40 to-black/90 border border-red-500/20 rounded-2xl p-6 backdrop-blur-xl shadow-2xl flex flex-col justify-between text-left shrink-0">
                         <div>
                             <div class="flex text-amber-400 space-x-1 mb-4 text-sm">★★★★★</div>
-                            <p class="text-xs text-slate-300 leading-relaxed mb-6">"+reppp no delay at all, safest tool out there right now. Support answers instantly."</p>
+                            <p class="text-xs text-slate-200 leading-relaxed mb-6 font-medium">"Emulator soo good! Driverless system makes me feel completely safe. Massive respect to the team."</p>
                         </div>
                         <div class="flex items-center justify-between border-t border-red-500/10 pt-4 text-xs">
-                            <span class="font-bold text-slate-200">zewox</span>
-                            <span class="text-slate-500 text-[10px]">1 month ago</span>
+                            <span class="font-bold text-red-300">zewox</span>
+                            <span class="text-slate-500 text-[10px]">1 week ago</span>
                         </div>
                     </div>
 
                     <!-- Yorum 3 -->
-                    <div class="bg-gradient-to-b from-red-950/30 to-black/80 border border-red-500/15 rounded-2xl p-6 backdrop-blur-xl shadow-2xl flex flex-col justify-between">
+                    <div class="testimonial-card w-[350px] bg-gradient-to-b from-red-950/40 to-black/90 border border-red-500/20 rounded-2xl p-6 backdrop-blur-xl shadow-2xl flex flex-col justify-between text-left shrink-0">
                         <div>
                             <div class="flex text-amber-400 space-x-1 mb-4 text-sm">★★★★★</div>
-                            <p class="text-xs text-slate-300 leading-relaxed mb-6">"Hwid reset was fast, menu design looks extremely clean. Worth every single penny."</p>
+                            <p class="text-xs text-slate-200 leading-relaxed mb-6 font-medium">"V1 internal is a masterpiece. Aimbot is super smooth and legit looking. 10/10!"</p>
                         </div>
                         <div class="flex items-center justify-between border-t border-red-500/10 pt-4 text-xs">
-                            <span class="font-bold text-slate-200">kralthepro</span>
+                            <span class="font-bold text-red-300">kralthepro</span>
+                            <span class="text-slate-500 text-[10px]">2 weeks ago</span>
+                        </div>
+                    </div>
+
+                    <!-- Yorum 4 -->
+                    <div class="testimonial-card w-[350px] bg-gradient-to-b from-red-950/40 to-black/90 border border-red-500/20 rounded-2xl p-6 backdrop-blur-xl shadow-2xl flex flex-col justify-between text-left shrink-0">
+                        <div>
+                            <div class="flex text-amber-400 space-x-1 mb-4 text-sm">★★★★★</div>
+                            <p class="text-xs text-slate-200 leading-relaxed mb-6 font-medium">"Support answered instantly when I needed a hwid reset. Best community and developers!"</p>
+                        </div>
+                        <div class="flex items-center justify-between border-t border-red-500/10 pt-4 text-xs">
+                            <span class="font-bold text-red-300">vortex</span>
                             <span class="text-slate-500 text-[10px]">3 weeks ago</span>
+                        </div>
+                    </div>
+
+                    <!-- Sonsuz döngü akışı kusursuz olsun diye kopyalanan grup -->
+                    <div class="testimonial-card w-[350px] bg-gradient-to-b from-red-950/40 to-black/90 border border-red-500/20 rounded-2xl p-6 backdrop-blur-xl shadow-2xl flex flex-col justify-between text-left shrink-0">
+                        <div>
+                            <div class="flex text-amber-400 space-x-1 mb-4 text-sm">★★★★★</div>
+                            <p class="text-xs text-slate-200 leading-relaxed mb-6 font-medium">"This is literally the best internal cheat available right now. Zero performance drop, clean menu!"</p>
+                        </div>
+                        <div class="flex items-center justify-between border-t border-red-500/10 pt-4 text-xs">
+                            <span class="font-bold text-red-300">nynox</span>
+                            <span class="text-slate-500 text-[10px]">2 days ago</span>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card w-[350px] bg-gradient-to-b from-red-950/40 to-black/90 border border-red-500/20 rounded-2xl p-6 backdrop-blur-xl shadow-2xl flex flex-col justify-between text-left shrink-0">
+                        <div>
+                            <div class="flex text-amber-400 space-x-1 mb-4 text-sm">★★★★★</div>
+                            <p class="text-xs text-slate-200 leading-relaxed mb-6 font-medium">"Emulator soo good! Driverless system makes me feel completely safe. Massive respect to the team."</p>
+                        </div>
+                        <div class="flex items-center justify-between border-t border-red-500/10 pt-4 text-xs">
+                            <span class="font-bold text-red-300">zewox</span>
+                            <span class="text-slate-500 text-[10px]">1 week ago</span>
                         </div>
                     </div>
                 </div>
@@ -472,6 +534,32 @@
                 document.body.classList.remove('hovered');
                 mouseGlow.style.width = '500px';
                 mouseGlow.style.height = '500px';
+            });
+        });
+
+        // 3D Kart Tilt (Eğilme) Efekti
+        const cards = document.querySelectorAll('.testimonial-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+                card.style.borderColor = 'rgba(239, 68, 68, 0.6)';
+                card.style.boxShadow = '0 20px 30px rgba(220, 20, 60, 0.25)';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+                card.style.borderColor = 'rgba(239, 68, 68, 0.2)';
+                card.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.5)';
             });
         });
     </script>
